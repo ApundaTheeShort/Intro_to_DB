@@ -2,17 +2,19 @@
 import mysql.connector
 from mysql.connector import Error
 
-mydb = mysql.connector.connect(
-    host="localhost",
-    user="root",
-    password="Kisumu@333%%",
-    database="alx_book_store"
-)
-
-mycursor = mydb.cursor()
 try:
+    mydb = mysql.connector.connect(
+        host="localhost",
+        user="root",
+        password="Kisumu@333%%",
+        database="alx_book_store"
+    )
+
+    mycursor = mydb.cursor()
     mycursor.execute("""
     CREATE DATABASE IF NOT EXIST alx_book_store
     """)
 except Error as e:
     print(f"Error while creating database {e}")
+finally:
+    mydb.close()
